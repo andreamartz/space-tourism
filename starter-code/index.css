@@ -11,6 +11,10 @@
   box-sizing: border-box;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 /*  Reset margins */
 body,
 h1,
@@ -27,7 +31,7 @@ picture {
 
 /* Set up the body */
 body {
-  line-height: 1.5; /* browser default is usually 1.4 */
+  line-height: 1.5; /* browser default is usually 1.4 which tends to be very small */
   min-height: 100vh; /* so that short pages won't be an issue */
 }
 
@@ -43,7 +47,7 @@ input,
 button,
 textarea,
 select {
-  font: inherit;
+  font: inherit;  /* by default these form elements DON'T inherit the font property value */
 }
 
 /* remove animations for people who have turned them off */
@@ -73,4 +77,22 @@ select {
 }
 
 .container {
+  margin: 0;
+  padding-inline: 2em;
+  max-width: 80rem;  /* can use a custome property for the width */
+  margin-inline: auto;
+}
+
+/* this rule hides the content visually for sighted users; it is only for screen readers */
+  /* e.g., if there is a button with no text in it but a sighted user can tell what it does */
+.sr-only {  
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; /* added line */
+  border: 0;
 }
