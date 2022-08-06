@@ -1,4 +1,31 @@
 /* ------------------------------- */
+/*  Custom properties
+/* ------------------------------- */
+
+/* custom colors are rgb values */
+:root {
+  /* colors */
+  --clr-dark: 11 13 23;
+  --clr-light: 208 214 249;
+  --clr-white: 255 255 255;
+
+  /* font-sizes */
+  --fs-900: 9.375rem;
+  --fs-800: 6.25rem;
+  --fs-700: 3.5rem;
+  --fs-600: 2rem;
+  --fs-500: 1.75rem;
+  --fs-400: 1.125rem;
+  --fs-300: 1rem;
+  --fs-200: 0.875rem;
+  
+  /* font-families */
+  --ff-serif: "Bellefair", serif;
+  --ff-sans-cond: "Barlow Condensed", sans-serif;
+  --ff-sans-normal: "Barlow", sans-serif;
+}
+
+/* ------------------------------- */
 /*  Reset
 /* ------------------------------- */
 
@@ -29,8 +56,22 @@ picture {
   margin: 0;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    font-weight: 400;  /* w/o this, headings render strangely bc we did not import the bold weight of the font used on the body */
+}
+
 /* Set up the body */
 body {
+  font-family: var(--ff-sans-normal);
+  font-size: var(--fs-400);
+  color: rgb( var(--clr-white) );
+  background-color: rgb( var(--clr-dark) );
   line-height: 1.5; /* browser default is usually 1.4 which tends to be very small */
   min-height: 100vh; /* so that short pages won't be an issue */
 }
@@ -66,6 +107,8 @@ select {
 /*  Utility classes
 /* ------------------------------- */
 
+/* general */
+
 .flex {
   display: flex;
   gap: var(--gap, 1rem);
@@ -76,12 +119,20 @@ select {
   gap: var(--gap, 1rem);
 }
 
+/* * + * selector is equivalent to :where(:not(:first-child)) */
+.flow > *:where(:not(:first-child)) {
+  margin-top: var(--flow-space, 1rem);  /* note that --flow-space is only defined here, nowhere else in the CSS file! */
+  outline: 1px solid red;
+}
+
 .container {
   margin: 0;
   padding-inline: 2em;
-  max-width: 80rem;  /* can use a custome property for the width */
+  max-width: 80rem;  /* can use a custom property for the width */
   margin-inline: auto;
 }
+
+.pad-right-4 { padding-right: 4rem; }
 
 /* this rule hides the content visually for sighted users; it is only for screen readers */
   /* e.g., if there is a button with no text in it but a sighted user can tell what it does */
@@ -95,4 +146,87 @@ select {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap; /* added line */
   border: 0;
+}
+
+/* colors */
+.bg-dark { background-color: rgb( var(--clr-dark) ); }
+.bg-light { background-color: rgb( var(--clr-light) ); }
+.bg-white { background-color: rgb( var(--clr-white) ); }
+.text-dark { color: rgb( var(--clr-dark) ); }
+.text-light { color: rgb( var(--clr-light) ); }
+.text-white { color: rgb( var(--clr-white) ); }
+
+/* typography */
+
+.ff-serif { font-family: var(--ff-serif); } 
+.ff-sans-cond { font-family: var(--ff-sans-cond); } 
+.ff-sans-normal { font-family: var(--ff-sans-normal); } 
+
+.letter-spacing-1 { letter-spacing: 4.75px; } 
+.letter-spacing-2 { letter-spacing: 2.7px; } 
+.letter-spacing-3 { letter-spacing: 2.35px; } 
+
+.uppercase { text-transform: uppercase; }
+
+.fs-900 { font-size: var(--fs-900); }
+.fs-800 { font-size: var(--fs-800); }
+.fs-700 { font-size: var(--fs-700); }
+.fs-600 { font-size: var(--fs-600); }
+.fs-500 { font-size: var(--fs-500); }
+.fs-400 { font-size: var(--fs-400); }
+.fs-300 { font-size: var(--fs-300); }
+.fs-200 { font-size: var(--fs-200); }
+
+.fs-900,
+.fs-800,
+.fs-700,
+.fs-600 {
+    line-height: 1.1;
+}
+
+/* ------------------------------- */
+/*  Components
+/* ------------------------------- */
+
+.large-button {
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;  /* shorthand for align-items and justify-items */
+  border-radius: 50%;
+  /* margin: 2em; */
+  padding: 0 2em;
+  position: relative;
+  text-decoration: none;
+}
+
+/* .large-button:hover {
+  border: 2em rgb(var(--clr-white) / .25 ) solid;
+  margin: 0;
+} */
+
+.large-button::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  background: rgb( var(--clr-white) / .15);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+/* ------------------------------- */
+/*  Utility-like classes
+/* ------------------------------- */
+
+.numbered-title {
+  text-transform: uppercase;
+  font-family: var(--ff-sans-cond);
+  font-size: var(--fs-500);
+  letter-spacing: 4.72px;
+}
+
+.numbered-title > span {
+  margin-right: .75em;
+  font-weight: 700;
+  color: rgb(var(--clr-white) / .25 );
 }
