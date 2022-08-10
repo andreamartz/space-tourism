@@ -210,26 +210,26 @@ select {
   display: grid;
   place-items: center;  /* shorthand for align-items and justify-items */
   border-radius: 50%;
-  /* margin: 2em; */
-  padding: 0 2em;
+  padding: 0 2em; /* em unit means the padding will change if the font-size changes */
   position: relative;
   text-decoration: none;
+  z-index: 1;
 }
-
-/* .large-button:hover {
-  border: 2em rgb(var(--clr-white) / .25 ) solid;
-  margin: 0;
-} */
 
 .large-button::after {
   content: '';
   position: absolute;
   z-index: -1;
-  background: rgb( var(--clr-white) / .15);
   width: 100%;
   height: 100%;
+  background: rgb( var(--clr-white) / .15);
   border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.5s linear, transform 0.5s ease-in-out;
 }
 
 .large-button:hover::after,
+.large-button:focus::after {
+  opacity: 1;
+  transform: scale(1.5);
 }
