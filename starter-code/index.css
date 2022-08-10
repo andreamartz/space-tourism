@@ -185,6 +185,23 @@ select {
 }
 
 /* ------------------------------- */
+/*  Utility-like classes
+/* ------------------------------- */
+
+.numbered-title {
+  text-transform: uppercase;
+  font-family: var(--ff-sans-cond);
+  font-size: var(--fs-500);
+  letter-spacing: 4.72px;
+}
+
+.numbered-title > span {
+  margin-right: .75em;
+  font-weight: 700;
+  color: rgb(var(--clr-white) / .25 );
+}
+
+/* ------------------------------- */
 /*  Components
 /* ------------------------------- */
 
@@ -214,19 +231,5 @@ select {
   border-radius: 50%;
 }
 
-/* ------------------------------- */
-/*  Utility-like classes
-/* ------------------------------- */
-
-.numbered-title {
-  text-transform: uppercase;
-  font-family: var(--ff-sans-cond);
-  font-size: var(--fs-500);
-  letter-spacing: 4.72px;
-}
-
-.numbered-title > span {
-  margin-right: .75em;
-  font-weight: 700;
-  color: rgb(var(--clr-white) / .25 );
+.large-button:hover::after,
 }
