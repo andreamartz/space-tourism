@@ -251,17 +251,27 @@ select {
   font-weight: 700;
 }
 
-.underline-indicators > * {
+.underline-indicators > li,
+.underline-indicators > button {
+  cursor: pointer;
+  border: 0;
   padding: var(--underline-gap, 1rem) 0;
   border-bottom: .2rem solid rgb(var(--clr-white) / 0);
 }
 
 .underline-indicators > li:hover, 
-.underline-indicators > li:focus {
+.underline-indicators > li:focus,
+.underline-indicators > button:hover, 
+.underline-indicators > button:focus {
   border-color: rgb(var(--clr-white) / 0.5);
-  /* border-bottom: 4px solid rgb(var(--clr-white) / 0.5); */
 }
 
-.underline-indicators > .active{
+.underline-indicators > li.active,
+.underline-indicators > button[aria-selected="true"] {
   border-color: rgb(var(--clr-white) / 1);
+  color: rgb(var(--clr-white) / 1);
+}
+
+.tabs {
+  --gap: 2.5rem;
 }
